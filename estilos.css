@@ -50,7 +50,7 @@ body {
 .tabla {
     position: relative;
     width: 600px;
-    height: 800px;
+    height: 920px;
 }
 
 .tabla1 {
@@ -109,6 +109,14 @@ body {
     width: 285px;
     height: 87px;
 }
+.item-6 {
+    position: absolute;
+    top: 700px;
+    left: 165px;
+    width: 285px;
+    height: 87px;
+}
+
 
 
 /* Estilos para el texto de los ítems */
@@ -207,11 +215,31 @@ body {
     cursor: pointer;
 
 }
+.item-tabla5 p {
+    position: absolute;
+    /* Permite posicionar el texto libremente */
+    top: 720px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Centra el texto perfectamente */
+    z-index: 10;
+    /* Asegura que el texto esté por encima de la imagen */
+    color: white;
+    /* Color del texto, ajústalo según el fondo */
+    font-size: 20px;
+    /* Tamaño de la fuente */
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+
+}
+
 
 .item-tabla1 p:hover,
 .item-tabla2 p:hover,
 .item-tabla3 p:hover,
 .item-tabla4 p:hover,
+.item-tabla5 p:hover,
 .menu-juego p:hover {
     font-size: 22px;
     /* Aumenta el tamaño del texto */
