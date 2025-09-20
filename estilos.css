@@ -41,29 +41,24 @@ body {
     justify-content: space-between;
 
 }
-.titulo {
-    position: relative; /* Importante para el z-index y el layout */
-    display: inline-block; /* Permite que el ancho se ajuste a la imagen del título */
-    cursor: pointer;
-    /* Asegúrate de posicionar tu título donde lo quieres en la pantalla */
-    /* Ejemplo: si el título está flotando o en una posición absoluta/fixed, asegúrate de ello */
-    z-index: 10; /* Asegura que el título siempre sea clickeable por encima del mapa de fondo */
 
-    /* Otros estilos de posicionamiento para tu título, por ejemplo: */
-    /* position: absolute; */
-    /* top: 5%; */
-    /* left: 50%; */
-    /* transform: translateX(-50%); */
+.titulo {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    z-index: 10;
+    height: 200px;
+    width: 600px;
 }
 
 .titulo1 {
-    width: 600px; /* Mantén tu ancho original */
-    height: 200px; /* Mantén tu alto original */
-    display: block; /* Para eliminar cualquier espacio extra debajo de la imagen */
+    width: 600px;
+    height: 200px;
+    display: block;
 }
 
 .sinopsis-overlay {
-    position: fixed; /* Esto es correcto para que ocupe toda la pantalla */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
@@ -74,9 +69,9 @@ body {
     align-items: center;
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.5s ease; /* Quitamos visibility de la transición para evitar problemas */
-    z-index: -1; /* ¡CLAVE! Lo enviamos al fondo por defecto */
-    pointer-events: none; /* ¡CLAVE! El ratón lo ignora cuando está oculto/en el fondo */
+    transition: opacity 0.5s ease;
+    z-index: -1;
+    pointer-events: none;
 }
 
 .sinopsis-contenido {
@@ -95,16 +90,54 @@ body {
 
 /* --- Efecto al pasar el puntero sobre el div.titulo --- */
 .titulo:hover .sinopsis-overlay {
-    visibility: visible; /* Lo hacemos visible */
-    opacity: 1; /* Lo hacemos opaco */
-    z-index: 1000; /* ¡CLAVE! Lo traemos al frente solo cuando está en hover */
-    pointer-events: auto; /* ¡CLAVE! Habilitamos la interacción (para cerrar, por ejemplo, si hubiera un botón) */
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    pointer-events: auto;
 }
 
 .titulo:hover .sinopsis-contenido {
     transform: scale(1);
 }
 
+/* Nuevo contenedor para la imagen y el texto del jugador */
+.contenedor-nombre-jugador {
+    position: absolute;
+    /* Usamos 'absolute' para que se posicione respecto a su padre */
+    top: 735px;
+    /* Mantén el valor de top que ya tenías */
+    width: 600px;
+    height: 200px;
+}
+
+/* Reglas para la imagen del jugador */
+.nombre-jugador {
+    position: relative;
+    /* Es importante que tenga position para que z-index funcione */
+    z-index: 1;
+    /* Coloca la imagen debajo del texto */
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Reglas para el texto que va encima de la imagen */
+.texto-nombre-jugador {
+    /* Eliminamos el " p" para que se aplique directamente a la clase */
+    position: absolute;
+    top: 145px;
+    left: 365px;
+    transform: translate(-50%, -50%);
+    /* Ajusta el centrado exacto */
+    color: white;
+    /* O el color que desees */
+    font-size: 28px;
+    font-family: sans-serif;
+    text-align: center;
+    pointer-events: none;
+    z-index: 2;
+    /* Asegura que el texto esté encima de la imagen, con un valor mayor */
+}
 
 .titulo1 {
     width: 600px;
@@ -149,7 +182,6 @@ body {
     height: 87px;
 }
 
-
 .item-4 {
     position: absolute;
     top: 600px;
@@ -166,13 +198,6 @@ body {
     height: 87px;
 }
 
-.item-5 {
-    position: absolute;
-    top: 210px;
-    left: 165px;
-    width: 285px;
-    height: 87px;
-}
 .item-6 {
     position: absolute;
     top: 700px;
@@ -279,6 +304,7 @@ body {
     cursor: pointer;
 
 }
+
 .item-tabla5 p {
     position: absolute;
     /* Permite posicionar el texto libremente */
@@ -298,7 +324,6 @@ body {
 
 }
 
-
 .item-tabla1 p:hover,
 .item-tabla2 p:hover,
 .item-tabla3 p:hover,
@@ -306,11 +331,19 @@ body {
 .item-tabla5 p:hover,
 .menu-juego p:hover {
     font-size: 22px;
-    /* Aumenta el tamaño del texto */
     text-shadow: 0 0 10px #ffffff;
-    /* Agrega un efecto de resplandor */
     color: #ffd700;
-    /* Cambia el color a un tono más brillante (dorado) */
     transform: translate(-50%, -50%) scale(1.1);
-    /* Hace que el texto sobresalga */
+}
+
+/* Efecto de hover para la imagen */
+.item-tabla1 .item-1:hover,
+.item-tabla2 .item-2:hover,
+.item-tabla3 .item-3:hover,
+.item-tabla4 .item-4:hover,
+.item-tabla5 .item-6:hover {
+    /* Agrega un filtro de brillo y un ligero escalado */
+    filter: drop-shadow(0 0 10px #0413e4);
+    transform: scale(1.05);
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
