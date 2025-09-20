@@ -41,6 +41,70 @@ body {
     justify-content: space-between;
 
 }
+.titulo {
+    position: relative; /* Importante para el z-index y el layout */
+    display: inline-block; /* Permite que el ancho se ajuste a la imagen del título */
+    cursor: pointer;
+    /* Asegúrate de posicionar tu título donde lo quieres en la pantalla */
+    /* Ejemplo: si el título está flotando o en una posición absoluta/fixed, asegúrate de ello */
+    z-index: 10; /* Asegura que el título siempre sea clickeable por encima del mapa de fondo */
+
+    /* Otros estilos de posicionamiento para tu título, por ejemplo: */
+    /* position: absolute; */
+    /* top: 5%; */
+    /* left: 50%; */
+    /* transform: translateX(-50%); */
+}
+
+.titulo1 {
+    width: 600px; /* Mantén tu ancho original */
+    height: 200px; /* Mantén tu alto original */
+    display: block; /* Para eliminar cualquier espacio extra debajo de la imagen */
+}
+
+.sinopsis-overlay {
+    position: fixed; /* Esto es correcto para que ocupe toda la pantalla */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease; /* Quitamos visibility de la transición para evitar problemas */
+    z-index: -1; /* ¡CLAVE! Lo enviamos al fondo por defecto */
+    pointer-events: none; /* ¡CLAVE! El ratón lo ignora cuando está oculto/en el fondo */
+}
+
+.sinopsis-contenido {
+    color: white;
+    font-family: sans-serif;
+    text-align: center;
+    max-width: 800px;
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    line-height: 1.6;
+    transform: scale(0.9);
+    transition: transform 0.5s ease;
+}
+
+/* --- Efecto al pasar el puntero sobre el div.titulo --- */
+.titulo:hover .sinopsis-overlay {
+    visibility: visible; /* Lo hacemos visible */
+    opacity: 1; /* Lo hacemos opaco */
+    z-index: 1000; /* ¡CLAVE! Lo traemos al frente solo cuando está en hover */
+    pointer-events: auto; /* ¡CLAVE! Habilitamos la interacción (para cerrar, por ejemplo, si hubiera un botón) */
+}
+
+.titulo:hover .sinopsis-contenido {
+    transform: scale(1);
+}
+
 
 .titulo1 {
     width: 600px;
